@@ -1,16 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CheckBoxStatus } from '../../../enums/checkbox-status.enum';
+import { SurveyService } from '../../services/survey.service';
 
 @Component({
   selector: 'app-survey-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
+  providers: [SurveyService],
   templateUrl: './survey-form.component.html',
   styleUrl: './survey-form.component.scss'
 })
 export class SurveyFormComponent implements OnInit {
+  surveyService = inject(SurveyService);
   public surveyForm: FormGroup;
   public CheckBoxStatus = CheckBoxStatus;
   public checkBoxStatus: CheckBoxStatus = CheckBoxStatus.DESELECTED;
@@ -50,6 +53,9 @@ export class SurveyFormComponent implements OnInit {
 
   public submitSurvey(event: Event): void {
     event.preventDefault();
+    this.surveyService.postAnswer(this.surveyForm.value);
+    this.surveyForm.reset();
+    this.checkBoxStatus = CheckBoxStatus.DESELECTED;
   }
 
   public toggleSelectAll(): void {
@@ -70,16 +76,12 @@ export class SurveyFormComponent implements OnInit {
     }
   }
 
-  public selectCheckbox(): void {
-    this.checkIndeterminate();
-  }
-
-  checkIndeterminate(): void {
+  public checkIndeterminate(): void {
     let selectedFields: boolean[] = [];
     for (let key in this.preferencesGroup.controls) {
-      selectedFields.push(this.preferencesGroup.controls[key].value)
+      selectedFields.push(this.preferencesGroup.controls[key].value);
     }
-    let selectedFieldsNumber = selectedFields.reduce<number>((acc: number, val) => val ? acc + 1 : acc, 0);
+    let selectedFieldsNumber: number = selectedFields.reduce<number>((acc: number, val) => val ? acc + 1 : acc, 0);
     switch (selectedFieldsNumber) {
       case (0): this.checkBoxStatus = CheckBoxStatus.DESELECTED; break;
       case (1):

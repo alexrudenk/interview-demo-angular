@@ -1,0 +1,18 @@
+<div class="main">
+    <div class="header">
+        <div class="name">Name</div>
+        <div class="age">Age</div>
+        <div class="preferences">Preferences</div>
+    </div>
+    <div class="data">
+        <div class="row" *ngFor="let answer of surveyAnswers">
+            <div class="name">{{ answer.name }}</div>
+            <div class="age">{{ answer.age }}</div>
+            <div class="preferences">
+                <p *ngIf="answer.preferences.sports">sports</p>
+                <p *ngIf="answer.preferences.books">books</p>
+                <p *ngIf="answer.preferences.travel">travel</p>
+            </div>
+        </div>
+    </div>
+</div>

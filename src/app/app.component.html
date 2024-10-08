@@ -3,16 +3,18 @@
     <img src="/images/crossbuilders.svg">
     <div class="header-placeholder">
       <ul>
-        <li>Menu-item 1</li>
-        <li>Menu-item 2</li>
-        <li>Menu-item 3</li>
+        <li>
+          <a routerLink="/survey" routerLinkActive="active">Survey</a>
+        </li>
+        <li>
+          <a routerLink="/results" routerLinkActive="active">Results</a>
+        </li>
       </ul>
     </div>
   </div>
 </header>
 <main>
-  <app-survey-form></app-survey-form>
+  <router-outlet></router-outlet>
 </main>
 <footer>
-
 </footer>

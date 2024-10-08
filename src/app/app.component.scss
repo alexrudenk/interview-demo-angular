@@ -28,8 +28,16 @@ header {
 
                 li {
                     padding: 0 24px;
-                    font-weight: 800;
-                    text-transform: uppercase;
+
+                    a {
+                        text-decoration: none;
+                        font-weight: 800;
+                        text-transform: uppercase;
+
+                        &.active {
+                            text-decoration: underline;
+                        }
+                    }
                 }
             }
         }

@@ -1,0 +1,36 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 50vw;
+    min-width: 500px;
+    padding: 20px;
+    background-color: #dbd6d6;
+
+    div {
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        width: 150px;
+    }
+}
+
+.data {
+    .row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 20px;
+        div {
+            width: 150px;
+            text-align: center;
+        }
+
+        .preferences {
+            display: flex;
+
+            p {
+                margin: 0 2px;
+            }
+        }
+    }
+}
