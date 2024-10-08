@@ -1,0 +1,110 @@
+.main {
+    width: 40vw;
+    min-width: 500px;
+    padding: 10px 20px;
+    border: 1px solid #35424C;
+    border-radius: 8px;
+
+    .header {
+        h1 {
+            text-transform: uppercase;
+            text-align: center;
+        }
+    }
+
+    .data {
+        form {
+
+            .form-field,
+            .checkboxes-block {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                padding: 10px 10px 25px 10px;
+
+                label {
+                    font-size: 20px;
+                    font-weight: 500;
+                    margin-bottom: 5px;
+                }
+
+                input:not([type='checkbox']) {
+                    height: 32px;
+                    font-size: 18px;
+                    border: none;
+                    background-color: #e9ebec;
+                    padding: 0 5px;
+                }
+            }
+
+            .checkboxes-block {
+                align-items: center;
+                margin: auto;
+                width: 50%;
+                min-width: 400px;
+
+                h2 {
+                    margin: 0 0 10px 0;
+                }
+
+                .controls {
+                    width: 50%;
+                    min-width: 200px;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    margin-bottom: 10px;
+                }
+
+                .checkbox-field {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 50%;
+                    min-width: 200px;
+                }
+
+                input[type='checkbox'] {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            .btn-block {
+                display: flex;
+                justify-content: flex-end;
+
+                .btn {
+                    width: 100px;
+                    height: 30px;
+                    background-color: #35424C;
+                    border: none;
+                    border-radius: 5px;
+                    color: #fff;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                }
+
+                .disabled-btn {
+                    cursor: not-allowed;
+                    background-color: grey;
+                }
+            }
+        }
+    }
+}
+
+.error {
+    border: 1px solid red;
+}
+
+.error-block {
+    position: absolute;
+    bottom: 0;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+
+    small {
+        color: #f70303;
+    }
+}

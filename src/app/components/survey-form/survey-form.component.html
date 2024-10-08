@@ -1,0 +1,53 @@
+<div class="main">
+    <div class="header">
+        <h1>
+            Survey form
+        </h1>
+    </div>
+    <div class="data">
+        <form [formGroup]="surveyForm" (submit)="submitSurvey($event)">
+            <div class="form-field">
+                <label>Name</label>
+                <input type="text" formControlName="name" [class.error]="nameControl.touched && nameControl.errors">
+                <div class="error-block" *ngIf="nameControl.touched && nameControl.errors">
+                    <small *ngIf="nameControl.errors?.['required']">Field is required</small>
+                    <small *ngIf="nameControl.errors?.['minlength']">Should be longer than 3 letters</small>
+                </div>
+            </div>
+            <div class="form-field">
+                <label>Age</label>
+                <input type="number" formControlName="age" [class.error]="ageControl.touched && ageControl.errors">
+                <div class="error-block" *ngIf="ageControl.touched && ageControl.errors">
+                    <small *ngIf="ageControl.errors?.['required']">Field is required</small>
+                    <small *ngIf="ageControl.errors?.['min']">Should not be lower than 0</small>
+                    <small *ngIf="ageControl.errors?.['max']">Should not be higher than 100</small>
+                </div>
+            </div>
+            <div class="checkboxes-block" formGroupName="preferences">
+                <h2>I like:</h2>
+                <div class="controls">
+                    <small>Select all</small>
+                    <input type="checkbox" (change)="toggleSelectAll()"
+                        [indeterminate]="checkBoxStatus === CheckBoxStatus.INDETERMINATE"
+                        [checked]="checkBoxStatus === CheckBoxStatus.SELECTED">
+                </div>
+                <div class="checkbox-field">
+                    <label>Do sports</label>
+                    <input type="checkbox" [formControl]="sportsControl" (change)="selectCheckbox()">
+                </div>
+                <div class="checkbox-field">
+                    <label>Read books</label>
+                    <input type="checkbox" [formControl]="booksControl" (change)="selectCheckbox()">
+                </div>
+                <div class="checkbox-field">
+                    <label>Travel</label>
+                    <input type="checkbox" [formControl]="travelControl" (change)="selectCheckbox()">
+                </div>
+            </div>
+            <div class="btn-block">
+                <button class="btn" type="submit" [class.disabled-btn]="surveyForm.invalid"
+                    [disabled]="surveyForm.invalid">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
